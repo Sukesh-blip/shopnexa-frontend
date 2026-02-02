@@ -115,7 +115,7 @@ const CartPage = () => {
 
       // Open Razorpay checkout interface
       const options = {
-        key: RAZORPAY_KEY,
+        key: {VITE_RAZORPAY_KEY},
         amount: Math.round(parseFloat(subtotal) * 100), // Razorpay expects amount in paise
         currency: "INR",
         name: "ShopNexa",
