@@ -1,0 +1,61 @@
+/* assets/modalStyles.css update for colorful UI */
+
+.modal-overlay {
+  background: rgba(139, 92, 246, 0.2);
+  /* Soft purple tint */
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: white;
+  border-radius: 30px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.4);
+}
+
+.modal-content h2 {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.modal-form-item label {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.modal-form input,
+.modal-form textarea {
+  background: #f8fafc;
+  border: 2px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.modal-form input:focus {
+  border-color: #ec4899;
+  background: white;
+}
+
+button {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  color: white;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+}
+
+button:last-child {
+  background: #f1f5f9;
+  color: #64748b;
+  box-shadow: none;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}

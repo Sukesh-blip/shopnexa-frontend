@@ -1,0 +1,40 @@
+:root {
+  /* Classic E-Commerce Palette - Professional & Trustworthy */
+  --primary: #2563eb;
+  /* Royal Blue */
+  --primary-hover: #1d4ed8;
+  --secondary: #fbbf24;
+  /* Amber / Golden for CTAs */
+  --secondary-hover: #f59e0b;
+  --bg-body: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-light: #e2e8f0;
+  --success: #10b981;
+  --danger: #ef4444;
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-body);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
