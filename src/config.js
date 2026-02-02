@@ -1,3 +1,4 @@
+// ShopNexa Configuration - Re-trigger build for environment variables
 // Razorpay Configuration
 export const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY;
 
