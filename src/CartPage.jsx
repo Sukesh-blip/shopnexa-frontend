@@ -7,6 +7,7 @@ import api from "./services/api";
 import { RAZORPAY_KEY } from "./config";
 
 const CartPage = () => {
+  console.log("Razorpay key from env:", import.meta.env.VITE_RAZORPAY_KEY);
   const [cartItems, setCartItems] = useState([]);
   const [overallPrice, setOverallPrice] = useState(0);
   const [username, setUsername] = useState(localStorage.getItem('username') || "");
