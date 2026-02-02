@@ -1,13 +1,14 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:9090",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: false, // JWT is Bearer header based
 });
 
-// Attach JWT
+// Attach JWT Bearer Token
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -16,16 +17,20 @@ api.interceptors.request.use(
     }
     return config;
   },
-  Promise.reject
+  (error) => Promise.reject(error)
 );
 
-// Handle auth failures globally
+// Global Error Handling: Handle 401/403 and redirect
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    if (error.response?.status === 401 || error.response?.status === 403) {
+      console.warn("Authentication failure. Clearing session...");
       localStorage.clear();
-      window.location.href = "/login";
+      // Only redirect if not already on login page to avoid loops
+      if (!window.location.pathname.includes("/login") && !window.location.pathname.includes("/admin")) {
+        window.location.href = window.location.pathname.includes("/admindashboard") ? "/admin" : "/login";
+      }
     }
     return Promise.reject(error);
   }
