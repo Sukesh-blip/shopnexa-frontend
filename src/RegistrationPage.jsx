@@ -16,7 +16,7 @@ export default function RegistrationPage() {
     setError(null); // Clear previous errors
 
     try {
-      const response = await api.post('/api/users/register', {
+      const response = await api.post('/api/auth/register', {
         username,
         email,
         password,
