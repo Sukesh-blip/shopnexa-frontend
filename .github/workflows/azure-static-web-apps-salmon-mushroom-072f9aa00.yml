@@ -31,8 +31,9 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "dist" # Built app content directory - optional
+          app_build_command: "npm run build"
           ###### End of Repository/Build Configurations ######
-        env: # Add this block to pass variables to the Vite build
+        env:
           VITE_API_BASE_URL: "https://shopnexa-backend-d9b5ccfqahczaxdm.eastasia-01.azurewebsites.net"
           VITE_RAZORPAY_KEY: ${{ secrets.VITE_RAZORPAY_KEY }}
 
