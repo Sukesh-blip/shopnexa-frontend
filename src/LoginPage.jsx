@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import api from "./services/api";
-import "./assets/styles.css";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -49,10 +47,11 @@ export default function LoginPage() {
 
   return (
     <div className="page-layout">
+      <Header cartCount={0} username="" />
       <div className="page-container">
         <div className="form-container">
           <h1 className="form-title">Login</h1>
-          {error && <p className="error-message">{error}</p>}
+          {error && <p className="error-message" style={{ color: 'var(--danger)', textAlign: 'center', marginBottom: '16px' }}>{error}</p>}
           <form onSubmit={handleSignIn} className="form-content">
             <div className="form-group">
               <label htmlFor="username" className="form-label">
@@ -96,6 +95,7 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

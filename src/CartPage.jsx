@@ -132,13 +132,15 @@ const CartPage = () => {
                   </div>
 
                   <div className="item-actions">
-                    <div className="quantity-controls">
-                      <button onClick={() => handleQuantityChange(item.product_id, -1)}>−</button>
+                    <div className="quantity-controls luxe-controls">
+                      <button className="qty-btn" onClick={() => handleQuantityChange(item.product_id, -1)}>−</button>
                       <span className="quantity-display">{item.quantity}</span>
-                      <button onClick={() => handleQuantityChange(item.product_id, 1)}>+</button>
+                      <button className="qty-btn" onClick={() => handleQuantityChange(item.product_id, 1)}>+</button>
                     </div>
                     <span className="price">₹{item.total_price}</span>
-                    <button className="remove-btn" onClick={() => handleRemove(item.product_id)}>🗑</button>
+                    <button className="remove-btn luxe-remove" onClick={() => handleRemove(item.product_id)}>
+                      <span style={{ fontSize: '1.2rem' }}>×</span>
+                    </button>
                   </div>
                 </div>
               </div>
