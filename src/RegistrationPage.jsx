@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import api from './services/api';
 import './assets/styles.css';
 import { useNavigate } from 'react-router-dom';
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 export default function RegistrationPage() {
   const [username, setUsername] = useState('');
@@ -34,6 +36,7 @@ export default function RegistrationPage() {
 
   return (
     <div className="page-layout">
+      <Header cartCount={0} username="" />
       <div className="page-container">
         <div className="form-container">
           <h1 className="form-title">Register</h1>
@@ -97,6 +100,7 @@ export default function RegistrationPage() {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
