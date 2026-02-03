@@ -13,12 +13,12 @@ export function ProductList({ products, onAddToCart }) {
         {Array.isArray(products) && products.map((product) => (
           <div key={product.productId || product.product_id} className="product-card">
             <img
-              src={product.images?.[0] || product.image_url || product.imageUrl || 'https://via.placeholder.com/150'}
+              src={product.images?.[0] || product.image_url || product.imageUrl || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiNFMkU4RjAiLz48cGF0aCBkPSJNNzUgNjBMMTEwIDExMEg0MEw3NSA2MFoiIGZpbGw9IiM5NEE0QjgiLz48L3N2Zz4='}
               alt={product.name}
               className="product-image"
               loading="lazy"
               onError={(e) => {
-                e.target.src = 'https://via.placeholder.com/150'; // Fallback image
+                e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiNFMkU4RjAiLz48cGF0aCBkPSJNNzUgNjBMMTEwIDExMEg0MEw3NSA2MFoiIGZpbGw9IiM5NEE0QjgiLz48L3N2Zz4=';
               }}
             />
             <div className="product-info">
