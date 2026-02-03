@@ -11,7 +11,7 @@ export function ProductList({ products, onAddToCart }) {
     <div className="product-list">
       <div className="product-grid">
         {Array.isArray(products) && products.map((product) => (
-          <div key={product.productId || product.product_id} className="product-card">
+          <div key={product.productId || product.product_id} className="product-card glass-card">
             <img
               src={product.images?.[0] || product.image_url || product.imageUrl || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiNFMkU4RjAiLz48cGF0aCBkPSJNNzUgNjBMMTEwIDExMEg0MEw3NSA2MFoiIGZpbGw9IiM5NEE0QjgiLz48L3N2Zz4='}
               alt={product.name}
@@ -24,13 +24,15 @@ export function ProductList({ products, onAddToCart }) {
             <div className="product-info">
               <h3 className="product-name">{product.name}</h3>
               <p className="product-description">{product.description}</p>
-              <p className="product-price">₹{product.price}</p>
-              <button
-                className="add-to-cart-btn"
-                onClick={() => onAddToCart(product.productId || product.product_id)}
-              >
-                Add to Cart
-              </button>
+              <div className="product-footer" style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <p className="product-price" style={{ margin: 0 }}>₹{product.price}</p>
+                <button
+                  className="add-to-cart-btn primary-gradient"
+                  onClick={() => onAddToCart(product.productId || product.product_id)}
+                >
+                  Add
+                </button>
+              </div>
             </div>
           </div>
         ))}

@@ -51,47 +51,62 @@ export default function OrdersPage() {
   };
 
   return (
-    <div className="maindiv">
-      <div className="customer-homepage">
-        <Header
-          cartCount={isCartLoading ? '...' : cartError ? 'Error' : cartCount}
-          username={username}
-        />
-        <main className="main-content">
-          <h1 className="form-title">Your Orders</h1>
-          {loading && <p>Loading orders...</p>}
-          {error && <p className="error-message">{error}</p>}
-          {!loading && !error && orders.length === 0 && (
-            <p>No orders found. Start shopping now!</p>
-          )}
-          {!loading && !error && orders.length > 0 && (
-            <div className="orders-list">
-              {orders.map((order, index) => (
-                <div key={index} className="order-card">
-                  <div className="order-card-header">
-                    <h3>Order Id : {order.order_id}</h3>
+    <div className="page-layout">
+      <Header
+        cartCount={isCartLoading ? '...' : cartError ? 'Error' : cartCount}
+        username={username}
+      />
+      <main className="main-content">
+        <h1 className="form-title text-gradient">Order History</h1>
+        {loading && <div className="loading-state">Syncing your orders...</div>}
+        {error && <p className="error-message">Connection failed: {error}</p>}
+
+        {!loading && !error && orders.length === 0 && (
+          <div className="cart-empty">
+            <h2>No orders yet.</h2>
+            <p style={{ color: 'var(--text-dim)' }}>Your fashion journey starts here.</p>
+          </div>
+        )}
+
+        {!loading && !error && orders.length > 0 && (
+          <div className="orders-list" style={{ display: 'grid', gap: '24px' }}>
+            {orders.map((order, index) => (
+              <div key={index} className="order-card glass-card" style={{ padding: '24px', display: 'flex', gap: '32px', alignItems: 'center' }}>
+                <img
+                  src={order.image_url || 'data:image/svg+xml;base64,...'}
+                  alt={order.name}
+                  className="order-product-image"
+                  style={{ width: '120px', height: '120px', borderRadius: '12px', objectFit: 'cover' }}
+                />
+                <div className="order-details" style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--primary)', fontWeight: 700 }}>ORDER ID: {order.order_id}</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--success)' }}>CONFIRMED</span>
                   </div>
-                  <div className="order-card-body">
-                    <img
-                      src={order.image_url}
-                      alt={order.name}
-                      className="order-product-image"
-                    />
-                    <div className="order-details">
-                      <h3 className="product-name">ProductName : {order.name}</h3>
-                      <h3>Description : {order.description}</h3>
-                      <h3>Quantity : {order.quantity}</h3>
-                      <h3>Price per Unit : ₹{order.price_per_unit.toFixed(2)}</h3>
-                      <h3>Total Price : ₹{order.total_price.toFixed(2)}</h3>
+                  <h2 style={{ fontSize: '1.5rem', marginBottom: '8px' }}>{order.name}</h2>
+                  <p style={{ color: 'var(--text-dim)', marginBottom: '16px', fontSize: '0.9rem' }}>{order.description}</p>
+
+                  <div style={{ display: 'flex', gap: '40px', borderTop: '1px solid var(--glass-border)', paddingTop: '16px' }}>
+                    <div>
+                      <small style={{ display: 'block', color: 'var(--text-muted)' }}>Quantity</small>
+                      <strong>{order.quantity} Units</strong>
+                    </div>
+                    <div>
+                      <small style={{ display: 'block', color: 'var(--text-muted)' }}>Price Unit</small>
+                      <strong>₹{order.price_per_unit.toFixed(2)}</strong>
+                    </div>
+                    <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
+                      <small style={{ display: 'block', color: 'var(--text-muted)' }}>Total Amount</small>
+                      <strong style={{ fontSize: '1.25rem' }}>₹{order.total_price.toFixed(2)}</strong>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-        </main>
-        <Footer />
-      </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </main>
+      <Footer />
     </div>
   );
 }
