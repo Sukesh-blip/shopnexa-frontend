@@ -27,7 +27,9 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    if (err.response?.status === 401 || err.response?.status === 403) {
+    const isAuthEndpoint = err.config.url.includes("/api/auth/login") || err.config.url.includes("/api/auth/register");
+
+    if ((err.response?.status === 401 || err.response?.status === 403) && !isAuthEndpoint) {
       console.warn("Auth Error:", err.response.status, "URL:", err.config.url);
       console.warn("Clearing session and redirecting...");
       localStorage.clear();
