@@ -28,7 +28,8 @@ api.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response?.status === 401 || err.response?.status === 403) {
-      console.warn("Authentication failure. Clearing session...");
+      console.warn("Auth Error:", err.response.status, "URL:", err.config.url);
+      console.warn("Clearing session and redirecting...");
       localStorage.clear();
       // Only redirect if not already on login page to avoid loops
       if (!window.location.pathname.includes("/login") && !window.location.pathname.includes("/admin")) {

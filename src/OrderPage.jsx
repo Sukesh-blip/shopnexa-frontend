@@ -16,10 +16,14 @@ export default function OrdersPage() {
 
   useEffect(() => {
     fetchOrders();
-    if (username) {
-      fetchCartCount(); // Fetch cart count only if username is available
+  }, []);
+
+  // Update cart count when orders or username changes
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      fetchCartCount();
     }
-  }, [username]); // Re-run cart count fetch if username changes
+  }, [orders, username]);
 
   const fetchOrders = async () => {
     try {
